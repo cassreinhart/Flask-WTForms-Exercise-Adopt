@@ -3,13 +3,15 @@
 {% block title %} Find a Pet {% endblock %}
 
 {% block content %}
-    <div class="pet container-md">
+    <div class="container-md">
     {% for pet in pets %}
-        <a href="/">{{pet.name}}</a>
+    <div class="container-sm pet">
+        <a href="/{{pet.id}}">{{pet.name}}</a>
         <img src="{{pet.photo_url}}" alt="{{pet.name}}">
         {% if pet.available %}
-        <b>Available</b>
+        <b>I'm Available for Adoption!</b>
         {% endif %}
+    </div>
     {% endfor %}
     </div>
 {% endblock %}
