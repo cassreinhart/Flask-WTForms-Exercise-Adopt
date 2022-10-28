@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Meet {{pet.name}}
+{% endblock %}
+
+{% block content %}
+    <div class="pet">
+        <h2>{{pet.name}}</h2>
+        <h4>{{pet.species}}</h4>
+        {% if pet.photo_url %}
+        <img src="{{pet.photo_url}}" alt="{{pet.name}}">
+        {% endif %}
+        {% if pet.available %}
+        <b>Available</b>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+    <div class="form">
+        <h3>Edit Pet</h3>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+    
+            {% for field in form if field.widget.input_type != 'hidden'%}
+            <div class="form-group">
+              {{field.label}}
+              {{field(class_="form-control")}}
+              {% for err in field.errors %}
+              <small class="form-text text-danger">
+                {{err}}
+              </small>
+              {% endfor %}
+            </div>
+            {% endfor %}
+            <button class="btn  btn-success  btn-lg">Submit</button>
+            <a href="/" class="btn btn-danger btn-lg">Go Back</a>
+    
+        </form>
+        </div>
+
+{% endblock %}
