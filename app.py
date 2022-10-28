@@ -48,12 +48,13 @@ def show_pet_detail_edit_pet_form(pet_id):
     form = EditPetForm(obj=pet)
 
     if form.validate_on_submit():
-        pet.photo_url = pet.photo_url.data
-        pet.notes = pet.notes.data
-        pet.available = pet.available.data
+        pet.notes = form.notes.data
+        pet.available = form.available.data
+        pet.photo_url = form.photo_url.data
+
         db.session.commit()
         flash(f"Pet {pet.name} updated!")
         return redirect(f"/{pet_id}")
     else:
-        return render_template(f'/{pet_id}', form=form, pet=pet)
+        return render_template(f'edit_details.html', form=form, pet=pet)
 

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, IntegerField, TextAreaField, BooleanField
-from wtforms.validators import URL, InputRequired, Optional, NumberRange, URL
+from wtforms.validators import URL, InputRequired, Optional, NumberRange
 
 class AddPetForm(FlaskForm):
     """Form for adding a pet"""
@@ -18,6 +18,6 @@ class AddPetForm(FlaskForm):
 class EditPetForm(FlaskForm):
     """Form for editing an existing pet"""
 
-    photo_url = StringField("URL to Photo", validators=[URL(), Optional()])
+    photo_url = StringField("URL to Photo", validators=[Optional(), URL()])
     notes = TextAreaField("Extra Notes", validators=[Optional()])
     available = BooleanField("Available for adoption?", validators=[Optional()], default="checked")
