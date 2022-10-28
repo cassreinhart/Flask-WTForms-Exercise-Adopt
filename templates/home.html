@@ -3,7 +3,7 @@
 {% block title %} Find a Pet {% endblock %}
 
 {% block content %}
-    <div class="pet">
+    <div class="pet container-md">
     {% for pet in pets %}
         <a href="/">{{pet.name}}</a>
         <img src="{{pet.photo_url}}" alt="{{pet.name}}">

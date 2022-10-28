@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="pet">
+    <div class="pet container-md">
         <h2>{{pet.name}}</h2>
         <h4>{{pet.species}}</h4>
         {% if pet.photo_url %}
@@ -17,7 +17,7 @@
     {% endfor %}
     </div>
 
-    <div class="form">
+    <div class="form container-md">
         <h3>Edit Pet</h3>
         <form method="POST">
             {{ form.hidden_tag() }}
